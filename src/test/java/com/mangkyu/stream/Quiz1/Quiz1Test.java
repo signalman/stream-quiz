@@ -1,5 +1,6 @@
 package com.mangkyu.stream.Quiz1;
 
+import com.opencsv.exceptions.CsvException;
 import org.junit.jupiter.api.Test;
 import java.io.IOException;
 
@@ -11,17 +12,17 @@ class Quiz1Test {
     private final Quiz1 quiz = new Quiz1();
 
     @Test
-    void quiz1() throws IOException {
+    void quiz1() throws IOException, CsvException {
         assertThat(quiz.quiz1()).isEqualTo(answer.quiz1());
     }
 
     @Test
-    void quiz2() throws IOException {
+    void quiz2() throws IOException, CsvException {
         assertThat(quiz.quiz2()).isEqualTo(answer.quiz2());
     }
 
     @Test
-    void quiz3() throws IOException {
+    void quiz3() throws IOException, CsvException {
         assertThat(quiz.quiz3()).isEqualTo(answer.quiz3());
     }
 

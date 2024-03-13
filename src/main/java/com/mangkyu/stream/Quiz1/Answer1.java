@@ -1,6 +1,7 @@
 package com.mangkyu.stream.Quiz1;
 
 import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
@@ -13,7 +14,7 @@ public class Answer1 {
     private static final String TARGET = "좋아";
     private static final int TARGET_LENGTH = TARGET.length();
 
-    public Map<String, Integer> quiz1() throws IOException {
+    public Map<String, Integer> quiz1() throws IOException, CsvException {
         // https://jeong-pro.tistory.com/212
         List<String[]> csvLines = readCsvLines();
 
@@ -23,7 +24,7 @@ public class Answer1 {
                 .collect(Collectors.toMap(hobby -> hobby, hobby -> 1, (oldValue, newValue) -> newValue += oldValue));
     }
 
-    public Map<String, Integer> quiz2() throws IOException {
+    public Map<String, Integer> quiz2() throws IOException, CsvException {
         List<String[]> csvLines = readCsvLines();
 
         return csvLines.stream()
@@ -33,7 +34,7 @@ public class Answer1 {
                 .collect(Collectors.toMap(hobby -> hobby, hobby -> 1, (oldValue, newValue) -> ++newValue));
     }
 
-    public int quiz3() throws IOException {
+    public int quiz3() throws IOException, CsvException {
         List<String[]> csvLines = readCsvLines();
 
         return csvLines.stream()
@@ -49,7 +50,7 @@ public class Answer1 {
         return 0;
     }
 
-    private List<String[]> readCsvLines() throws IOException {
+    private List<String[]> readCsvLines() throws IOException, CsvException {
         CSVReader csvReader = new CSVReader(new FileReader(getClass().getResource("/user.csv").getFile()));
         csvReader.readNext();
         return csvReader.readAll();
